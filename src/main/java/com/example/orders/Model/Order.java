@@ -21,7 +21,7 @@ public class Order {
     private Customer customer;
 
     @OneToMany(mappedBy = "order")
-    private List<Order> orders;
+    private List<OrderItem> ordersItems;
 
     private LocalDate orderDate;
     private Float totalAmount;
@@ -35,12 +35,12 @@ public class Order {
         return order;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<OrderItem> getOrdersItems() {
+        return ordersItems;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setOrdersItems(List<OrderItem> ordersItems) {
+        this.ordersItems = ordersItems;
     }
 
     public Long getId() {

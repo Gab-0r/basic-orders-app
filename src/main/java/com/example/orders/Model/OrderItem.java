@@ -1,5 +1,7 @@
 package com.example.orders.Model;
 
+import com.example.orders.DTO.Order.OrderRequest;
+import com.example.orders.DTO.OrderItem.OrderItemRequest;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +21,17 @@ public class OrderItem {
     private String productName;
     private Integer quantity;
     private Float price;
+
+    public static OrderItem from(OrderItemRequest orderItemRequest, Order order){
+        OrderItem orderItem = new OrderItem();
+        orderItem.setId(orderItemRequest.getId());
+        orderItem.setOrder(order);
+        orderItem.setProductName(orderItemRequest.getProductName());
+        orderItem.setQuantity(orderItem.getQuantity());
+        orderItem.setPrice(orderItem.getPrice());
+        return orderItem;
+    }
+
 
     public Long getId() {
         return id;
