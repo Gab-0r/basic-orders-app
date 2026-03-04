@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -19,6 +20,9 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @OneToMany(mappedBy = "order")
+    private List<Order> orders;
+
     private LocalDate orderDate;
     private Float totalAmount;
     private String status;
@@ -29,6 +33,14 @@ public class Order {
         order.setOrderDate(LocalDate.now());
         order.status = "PENDING";
         return order;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public Long getId() {
